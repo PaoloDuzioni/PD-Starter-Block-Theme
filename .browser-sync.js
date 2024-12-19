@@ -17,5 +17,6 @@ module.exports = {
         'dist/css/vendors.css',
         'dist/js/app.js',
         '**/*.php',
+        '**/*.twig',
     ],
 };

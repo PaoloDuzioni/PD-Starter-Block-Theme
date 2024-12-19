@@ -5,10 +5,9 @@
 // GLOBALS
 @import 'global/vars';
 @import 'global/base';
-@import 'global/typography';
 // @import 'global/mixins';
+@import 'global/typography';
 @import 'global/utilities';
-// @import 'global/animations';
 
 // COMPONENTS
 @import 'components/buttons';
@@ -20,9 +19,9 @@
 @import 'pages/home';
 @import 'pages/internals';
 
-// SECTIONS
-@import 'sections/header';
-@import 'sections/footer';
+// LAYOUT
+@import 'layout/header';
+@import 'layout/footer';
 
 // CUSTOM BLOCKS
 // @import '../../blocks/banner/banner';
