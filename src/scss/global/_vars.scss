@@ -1,0 +1,23 @@
+/***************************************************
+    VARIABLES
+ ***************************************************/
+
+//COLORS
+$white: #fff;
+$black: #000;
+$font-col: #333;
+$back-col: $white;
+$primary: dodgerblue;
+$secondary: orange;
+
+// TYPOGRAPHY
+$main-font: 'Roboto', sans-serif;
+// for easy rem to px conversions (1rem -> 10px) and flexible for poor vision change on browser
+$base-font: 62.5%;
+$font-regular: 400;
+$font-bold: 700;
+
+// Dynamic values
+:root {
+    --body-font-size: 1.6rem; // 16px
+}

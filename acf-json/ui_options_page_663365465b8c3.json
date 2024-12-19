@@ -1,0 +1,22 @@
+{
+    "key": "ui_options_page_663365465b8c3",
+    "title": "Impostazioni Tema",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Impostazioni Tema",
+    "menu_slug": "impostazioni-tema",
+    "parent_slug": "none",
+    "advanced_configuration": 1,
+    "icon_url": "",
+    "menu_title": "",
+    "position": "",
+    "redirect": 0,
+    "description": "",
+    "update_button": "Aggiorna",
+    "updated_message": "Opzioni Aggiornate",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 0,
+    "modified": 1714644344
+}

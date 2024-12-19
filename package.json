@@ -1,0 +1,33 @@
+{
+    "name": "pd-front-end-build-tools",
+    "version": "1.2.0",
+    "description": "tools to build scss and js",
+    "main": "app.js",
+    "scripts": {
+        "dev": "concurrently \"npm run sass\" \"npm run js\" \"npm run serve\"",
+        "prod": "npm run prefixCSS && npm run buildJS && npm run cleanMaps",
+        "serve": "browser-sync start --config .browser-sync.js",
+        "sass": "sass --watch --style=compressed src/scss/app.scss:dist/css/app.css src/scss/vendors.scss:dist/css/vendors.css",
+        "js": "esbuild --watch src/js/app.js --bundle --sourcemap --outfile=dist/js/app.js",
+        "buildJS": "esbuild src/js/app.js --bundle --minify --outfile=dist/js/app.js --legal-comments=none",
+        "prefixCSS": "postcss dist/css/app.css --use autoprefixer -d dist/css --no-map",
+        "cleanMaps": "shx rm dist/js/*.map dist/css/*.map"
+    },
+    "author": "Paolo Duzioni",
+    "license": "ISC",
+    "browserslist": "defaults",
+    "dependencies": {
+        "bootstrap": "^5.3.3",
+        "swiper": "^11.1.10"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.20",
+        "browser-sync": "^3.0.2",
+        "concurrently": "^8.2.2",
+        "esbuild": "0.20.2",
+        "postcss": "^8.4.41",
+        "postcss-cli": "^11.0.0",
+        "sass": "^1.77.8",
+        "shx": "^0.3.4"
+    }
+}

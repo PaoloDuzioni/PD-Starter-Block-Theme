@@ -1,0 +1,28 @@
+/***************************************************
+    APP MAIN STYLESHEET
+ ***************************************************/
+
+// GLOBALS
+@import 'global/vars';
+@import 'global/base';
+@import 'global/typography';
+// @import 'global/mixins';
+@import 'global/utilities';
+// @import 'global/animations';
+
+// COMPONENTS
+@import 'components/buttons';
+@import 'components/sliders';
+@import 'components/form';
+// @import 'components/pagination';
+
+// PAGES
+@import 'pages/home';
+@import 'pages/internals';
+
+// SECTIONS
+@import 'sections/header';
+@import 'sections/footer';
+
+// CUSTOM BLOCKS
+// @import '../../blocks/banner/banner';
