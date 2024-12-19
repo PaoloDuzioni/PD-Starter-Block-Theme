@@ -2,9 +2,11 @@
     Pagination
  ******************************************************/
 
- .pagination {
+.pagination {
+    display: flex;
+    justify-content: center;
     gap: 1rem;
-    margin-top: 7rem;
+    margin-top: 6rem;
     font-size: 2rem;
 
     li {
@@ -50,5 +52,16 @@
         &:focus-visible {
             color: $secondary;
         }
+    }
+}
+
+/******************************************************
+    RESPONSIVE
+ ******************************************************/
+
+@media (max-width: 767px) {
+    .pagination {
+        margin-top: 5rem;
+        font-size: 1.6rem;
     }
 }

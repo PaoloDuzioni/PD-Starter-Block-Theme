@@ -5,13 +5,11 @@
  * CONTENTS:
  * - Init Timber
  * - Banner noidex
- * - Custom Pagination
- * - Custom Blocks with ACF
  * - Register Thumbnail & Navigation Menus
  * - Include scripts & styles
- * - Bootstrap 5 Navwalker
+ * - Custom Pagination
+ * - Custom Blocks with ACF
  * - Custom WP API endpoints
- * - Yoast Meta Box to bottom of page editor
  */
 
 // Load Composer dependencies.
@@ -37,9 +35,6 @@ require_once(dirname(__FILE__) . '/core/theme_features_nav.php');
 // Include scripts & styles
 require_once(dirname(__FILE__) . '/core/theme_site-scripts.php');
 
-// Compatibility for bootstrap 5 classes on WP nav menus
-require_once(dirname(__FILE__) . '/core/class-wp-bootstrap-navwalker.php');
-
 // Custom Pagination
 // require_once(dirname(__FILE__) . '/core/theme_pagination.php');
 
@@ -49,6 +44,7 @@ require_once(dirname(__FILE__) . '/core/class-wp-bootstrap-navwalker.php');
 // Custom WP API endpoints
 //require_once( dirname( __FILE__ ) . '/core/theme_wp_api.php' );
 
+require_once(dirname(__FILE__) . '/core/theme_setup.php');
 
 /**
  * TESTING MAIL SMTP

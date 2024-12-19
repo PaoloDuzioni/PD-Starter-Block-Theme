@@ -23,7 +23,7 @@ function pd_theme_setup()
      * add_image_size( 'category-thumb', 300 ); // 300 pixels wide (and unlimited height)
      * add_image_size( 'homepage-thumb', 220, 180, true ); // (cropped)
      */
-    add_image_size('size-1920', 1920);
+    //add_image_size('size-1920', 1920);
 
 
     /**
@@ -34,6 +34,7 @@ function pd_theme_setup()
             'main-menu' => __('Main Menu')
         )
     );
+    
 
     /**
      * DECLARE WOOCOMMERCE THEME COMPATIBILITY

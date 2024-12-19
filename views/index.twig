@@ -1,5 +1,19 @@
 {% extends "base.twig" %}
 
 {% block content %}
-    hi
+    <div class="container">
+        <div class="section-title">
+            <h1>News</h1>
+        </div>
+        
+        {% if posts is not empty %}
+            <div class="row">
+                {% for post in posts %}
+                    {{ include('partials/teaser.twig') }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    
+    {{ include('partials/pagination.twig') }}
 {% endblock %}

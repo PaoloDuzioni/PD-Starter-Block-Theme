@@ -1,0 +1,19 @@
+<div class="col-md-4">
+    <img
+            src="{{ post.thumbnail.src('medium') }}"
+            alt="{{ post.thumbnail.alt }}"
+            width="{{ post.thumbnail.width }}"
+            height="{{ post.thumbnail.height }}"
+            loading="lazy"
+    >
+    
+    <h2>
+        <a href="{{ post.link }}"
+           aria-describedby="desc-{{ post.slug }}"
+        >
+            {{ post.title }}
+        </a>
+    </h2>
+    
+    <p>{{ post.excerpt({read_more: false}) }}</p>
+</div>

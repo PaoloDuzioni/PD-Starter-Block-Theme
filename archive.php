@@ -1,2 +1,4 @@
-<?php wp_redirect(home_url());
-exit;
+<?php
+$context = Timber::context();
+
+Timber::render('index.twig', $context);

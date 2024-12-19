@@ -1,0 +1,40 @@
+{% if posts.pagination.pages is not empty %}
+    <nav class="wrap-pagination">
+        <ul class="pagination list-unstyled">
+            {# Previous #}
+            {% if posts.pagination.prev %}
+                <li class="prev-link">
+                    <a href="{{ posts.pagination.prev.link }}#top-archive" class="page-numbers prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="m5 12l7 6v-5h6v-2h-6V6z"/>
+                        </svg>
+                    </a>
+                </li>
+            {% endif %}
+            
+            
+            {% for page in posts.pagination.pages %}
+                {% if page.link %}
+                    <li class="{{ loop.index == 1 ? 'no-dot' : '' }}">
+                        <a href="{{ page.link }}#top-archive" class="page-numbers {{ page.class }}">{{ page.title }}</a>
+                    </li>
+                {% else %}
+                    <li class="current {{ loop.index == 1 ? 'no-dot' : '' }}">
+                        <span class="{{ page.class }}">{{ page.title }}</span>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            
+            
+            {% if posts.pagination.next %}
+                <li class="next-link">
+                    <a href="{{ posts.pagination.next.link }}#top-archive" class="page-numbers next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="m19 12l-7-6v5H6v2h6v5z"/>
+                        </svg>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endif %}
