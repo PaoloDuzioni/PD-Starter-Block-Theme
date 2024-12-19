@@ -1,0 +1,11 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <div class="content-wrapper">
+        {% for post in posts %}
+            {% include ['partials/teaser.twig'] %}
+        {% endfor %}
+        
+        {% include 'partials/pagination.twig' %}
+    </div>
+{% endblock %}

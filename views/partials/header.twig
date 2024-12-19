@@ -35,6 +35,8 @@
             
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 {% include "partials/menu.twig" with {'items': menu.get_items, 'id': 'menu-main-menu'} %}
+                
+                {% include "partials/search-form.twig" %}
             </div>
         </div>
     </nav>
