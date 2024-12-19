@@ -12,16 +12,13 @@
       data-template="base.twig">
 <div class="body-loader"></div>
 
-<div id="main-wrapper">
-    
-    {% include 'partials/header.twig' %}
-    
-    <main id="content" role="main" class="content-wrapper">
-        {% block content %}
-            Sorry, no content
-        {% endblock %}
-    </main>
-</div>
+{% include 'partials/header.twig' %}
+
+<main id="main-content" role="main" class="content-wrapper">
+    {% block content %}
+        Sorry, no content
+    {% endblock %}
+</main>
 
 {% block footer %}
     {% include 'partials/footer.twig' %}

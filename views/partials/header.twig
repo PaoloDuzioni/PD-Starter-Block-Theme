@@ -2,16 +2,16 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ site.url }}">
-                {% if logo_principale %}
-                    {% set image_logo_principale = get_image(logo_principale) %}
+                {% if options.logo_image %}
+                    {% set logo = get_image(options.logo_image) %}
                     <picture>
-                        <source srcset="{{ image_logo_principale.src|towebp }}"
+                        <source srcset="{{ logo.src |towebp | resize(300, 100) }}"
                                 type="image/webp">
-                        <source srcset="{{ image_logo_principale.src }}}">
-                        <img id="logo_desktop" src="{{ image_logo_principale.src|towebp }}"
-                             alt="{{ image_logo_principale.alt }}"
-                             width="{{ image_logo_principale.width }}"
-                             height="{{ image_logo_principale.height }}"/>
+                        <source srcset="{{ logo.src | resize(300, 100) }}">
+                        <img id="logo_desktop" src="{{ logo.src | towebp | resize(300, 100) }}"
+                             alt="{{ logo.alt }}"
+                             width="300"
+                             height="100"/>
                     </picture>
                 {% else %}
                     {{ site.name }}

@@ -7,8 +7,8 @@ html {
 }
 
 body {
-    display: flex;
-    flex-direction: column; // Sticky footer
+    display: grid;
+    grid-template-rows: auto 1fr auto; // Sticky footer
     min-height: 100vh;
     font-family: $main-font;
     -webkit-font-smoothing: antialiased;
@@ -16,11 +16,6 @@ body {
     font-size: var(--body-font-size);
     color: $font-col;
     background: $back-col;
-}
-
-// Sticky footer
-#main-wrapper {
-    flex-grow: 1;
 }
 
 ::selection {
