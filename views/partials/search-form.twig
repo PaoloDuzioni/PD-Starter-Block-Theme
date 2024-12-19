@@ -1,7 +1,8 @@
 <form class="search-form d-flex" action="{{ site.url }}" method="get">
     {{ wp_nonce_field }}
     <div class="input-group">
-        <input type="text" id="s" class="form-control" name="s" placeholder="Search" aria-label="Search"/>
+        <input type="text" id="s" class="form-control" name="s" placeholder="Search" aria-label="Search"
+               value="{{ search_query }}"/>
         <button type="submit">
             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search"
                  class="icon" role="img" xmlns="http://www.w3.org/2000/svg"

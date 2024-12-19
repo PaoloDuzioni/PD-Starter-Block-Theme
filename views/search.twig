@@ -1,11 +1,17 @@
 {% extends "base.twig" %}
 
 {% block content %}
-    <div class="content-wrapper">
-        {% for post in posts %}
-            {% include ['partials/teaser.twig'] %}
-        {% endfor %}
-        
-        {% include 'partials/pagination.twig' %}
+    <div class="container">
+        {% if posts|length == 0 %}
+            No posts found with your search.
+        {% else %}
+            <h1>Search results for "{{ search_query }}"</h1>
+            <p>Total results: {{ posts|length }}</p>
+            
+            {% for post in posts %}
+                {% include ['partials/teaser.twig'] %}
+            {% endfor %}
+            {% include 'partials/pagination.twig' %}
+        {% endif %}
     </div>
 {% endblock %}
