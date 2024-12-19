@@ -218,7 +218,7 @@
                     "name": "single_social",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "",
+                    "instructions": "Inserisci classe Fontello da utilizzare. https:\/\/fontello.com\/",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -228,6 +228,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
+                    "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
@@ -375,5 +376,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1734615224
+    "modified": 1734617504
 }

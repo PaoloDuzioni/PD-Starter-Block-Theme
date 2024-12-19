@@ -1,0 +1,11 @@
+{% if options.contacts_social %}
+    <ul class="wrap-socials list-unstyled">
+        {% for social in options.contacts_social %}
+            <li>
+                <a href="{{ social.single_social_url }}" target="_blank">
+                    <i class="{{ social.single_social }}"></i>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
