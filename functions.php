@@ -34,14 +34,15 @@ require_once(dirname(__FILE__) . '/core/theme_features_nav.php');
 // Include scripts & styles
 require_once(dirname(__FILE__) . '/core/theme_site-scripts.php');
 
-// Custom Blocks with ACF
-// require_once(dirname(__FILE__) . '/blocks/register-blocks.php');
+// Theme setup (menus in context, theme options in context, ecc...)
+require_once(dirname(__FILE__) . '/core/theme_setup.php');
 
 // Custom WP API endpoints
 //require_once( dirname( __FILE__ ) . '/core/theme_wp_api.php' );
 
-require_once(dirname(__FILE__) . '/core/theme_setup.php');
 
+// Custom Blocks with ACF
+ require_once(dirname(__FILE__) . '/core/theme_blocks.php');
 /**
  * TESTING MAIL SMTP
  */

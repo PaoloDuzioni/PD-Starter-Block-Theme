@@ -1,0 +1,31 @@
+<div id="particles-js"></div>
+<div class="news-section">
+    <div class="row gy-4 g-md-4 boxes-news">
+        {% for post in posts %}
+            <div class="col-md-6 col-lg-4">
+                <div class="box">
+                    <div>
+                        <a class="category"
+                           href="{{ post.categories[0].link }}#top-archive">
+                            {{ post.categories[0].title }}
+                        </a>
+                        <h3 class="title">{{ post.title }}</h3>
+                        <div class="date">{{ post.date('d F Y') }}</div>
+                        <p class="text">{{ post.excerpt({ words: 100, read_more: false}) }}</p>
+                    </div>
+                    <div>
+                        <a class="button outline" href="{{ post.link }}">
+                            Leggi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <div class="text-center">
+        <a class="cta" href="{{ news_url }}">
+            {{ fields.testo_cta_news_section }}
+        </a>
+    </div>
+</div>
