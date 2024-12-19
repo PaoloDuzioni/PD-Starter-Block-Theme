@@ -15,7 +15,7 @@
     },
     "author": "Paolo Duzioni",
     "license": "ISC",
-    "browserslist": "defaults",
+    "browserslist": ["defaults"],
     "dependencies": {
         "bootstrap": "^5.3.3",
         "swiper": "^11.1.10"

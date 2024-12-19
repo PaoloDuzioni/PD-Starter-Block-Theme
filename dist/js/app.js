@@ -3038,7 +3038,22 @@
     if (selector === void 0) {
       selector = "";
     }
-    return [...element.children].filter((el) => el.matches(selector));
+    const children = [...element.children];
+    if (element instanceof HTMLSlotElement) {
+      children.push(...element.assignedElements());
+    }
+    if (!selector) {
+      return children;
+    }
+    return children.filter((el) => el.matches(selector));
+  }
+  function elementIsChildOf(el, parent) {
+    const isChild = parent.contains(el);
+    if (!isChild && parent instanceof HTMLSlotElement) {
+      const children = [...parent.assignedElements()];
+      return children.includes(el);
+    }
+    return isChild;
   }
   function showWarning(text) {
     try {
@@ -3333,7 +3348,7 @@
       });
       observer.observe(target, {
         attributes: typeof options.attributes === "undefined" ? true : options.attributes,
-        childList: typeof options.childList === "undefined" ? true : options.childList,
+        childList: swiper.isElement || (typeof options.childList === "undefined" ? true : options).childList,
         characterData: typeof options.characterData === "undefined" ? true : options.characterData
       });
       observers.push(observer);
@@ -3744,8 +3759,9 @@
         allSlidesSize += slideSizeValue + (spaceBetween || 0);
       });
       allSlidesSize -= spaceBetween;
-      if (allSlidesSize < swiperSize) {
-        const allSlidesOffset = (swiperSize - allSlidesSize) / 2;
+      const offsetSize = (params.slidesOffsetBefore || 0) + (params.slidesOffsetAfter || 0);
+      if (allSlidesSize + offsetSize < swiperSize) {
+        const allSlidesOffset = (swiperSize - allSlidesSize - offsetSize) / 2;
         snapGrid.forEach((snap, snapIndex) => {
           snapGrid[snapIndex] = snap - allSlidesOffset;
         });
@@ -3844,6 +3860,13 @@
       slides[i].swiperSlideOffset = (swiper.isHorizontal() ? slides[i].offsetLeft : slides[i].offsetTop) - minusOffset - swiper.cssOverflowAdjustment();
     }
   }
+  var toggleSlideClasses$1 = (slideEl, condition, className) => {
+    if (condition && !slideEl.classList.contains(className)) {
+      slideEl.classList.add(className);
+    } else if (!condition && slideEl.classList.contains(className)) {
+      slideEl.classList.remove(className);
+    }
+  };
   function updateSlidesProgress(translate2) {
     if (translate2 === void 0) {
       translate2 = this && this.translate || 0;
@@ -3862,9 +3885,6 @@
     let offsetCenter = -translate2;
     if (rtl)
       offsetCenter = translate2;
-    slides.forEach((slideEl) => {
-      slideEl.classList.remove(params.slideVisibleClass, params.slideFullyVisibleClass);
-    });
     swiper.visibleSlidesIndexes = [];
     swiper.visibleSlides = [];
     let spaceBetween = params.spaceBetween;
@@ -3888,11 +3908,9 @@
       if (isVisible) {
         swiper.visibleSlides.push(slide2);
         swiper.visibleSlidesIndexes.push(i);
-        slides[i].classList.add(params.slideVisibleClass);
       }
-      if (isFullyVisible) {
-        slides[i].classList.add(params.slideFullyVisibleClass);
-      }
+      toggleSlideClasses$1(slide2, isVisible, params.slideVisibleClass);
+      toggleSlideClasses$1(slide2, isFullyVisible, params.slideFullyVisibleClass);
       slide2.progress = rtl ? -slideProgress : slideProgress;
       slide2.originalProgress = rtl ? -originalSlideProgress : originalSlideProgress;
     }
@@ -5319,7 +5337,7 @@
     }
     let targetEl = e.target;
     if (params.touchEventsTarget === "wrapper") {
-      if (!swiper.wrapperEl.contains(targetEl))
+      if (!elementIsChildOf(targetEl, swiper.wrapperEl))
         return;
     }
     if ("which" in e && e.which === 3)
@@ -5534,7 +5552,10 @@
       if (swiper.animating) {
         const evt = new window.CustomEvent("transitionend", {
           bubbles: true,
-          cancelable: true
+          cancelable: true,
+          detail: {
+            bySwiperTouchMove: true
+          }
         });
         swiper.wrapperEl.dispatchEvent(evt);
       }
@@ -5567,7 +5588,7 @@
       resistanceRatio = 0;
     }
     if (diff > 0) {
-      if (isLoop && allowLoopFix && !loopFixed && data.allowThresholdMove && data.currentTranslate > (params.centeredSlides ? swiper.minTranslate() - swiper.slidesSizesGrid[swiper.activeIndex + 1] : swiper.minTranslate())) {
+      if (isLoop && allowLoopFix && !loopFixed && data.allowThresholdMove && data.currentTranslate > (params.centeredSlides ? swiper.minTranslate() - swiper.slidesSizesGrid[swiper.activeIndex + 1] - (params.slidesPerView !== "auto" && swiper.slides.length - params.slidesPerView >= 2 ? swiper.slidesSizesGrid[swiper.activeIndex + 1] + swiper.params.spaceBetween : 0) - swiper.params.spaceBetween : swiper.minTranslate())) {
         swiper.loopFix({
           direction: "prev",
           setTranslate: true,
@@ -5581,7 +5602,7 @@
         }
       }
     } else if (diff < 0) {
-      if (isLoop && allowLoopFix && !loopFixed && data.allowThresholdMove && data.currentTranslate < (params.centeredSlides ? swiper.maxTranslate() + swiper.slidesSizesGrid[swiper.slidesSizesGrid.length - 1] : swiper.maxTranslate())) {
+      if (isLoop && allowLoopFix && !loopFixed && data.allowThresholdMove && data.currentTranslate < (params.centeredSlides ? swiper.maxTranslate() + swiper.slidesSizesGrid[swiper.slidesSizesGrid.length - 1] + swiper.params.spaceBetween + (params.slidesPerView !== "auto" && swiper.slides.length - params.slidesPerView >= 2 ? swiper.slidesSizesGrid[swiper.slidesSizesGrid.length - 1] + swiper.params.spaceBetween : 0) : swiper.maxTranslate())) {
         swiper.loopFix({
           direction: "next",
           setTranslate: true,
@@ -5910,6 +5931,8 @@
     const capture = !!params.nested;
     const domMethod = method === "on" ? "addEventListener" : "removeEventListener";
     const swiperMethod = method;
+    if (!el || typeof el === "string")
+      return;
     document2[domMethod]("touchstart", swiper.onDocumentTouchStart, {
       passive: false,
       capture
@@ -6172,6 +6195,8 @@
       el,
       classNames
     } = swiper;
+    if (!el || typeof el === "string")
+      return;
     el.classList.remove(...classNames);
     swiper.emitContainerClasses();
   }
@@ -6891,8 +6916,12 @@
       }
       if (cleanStyles) {
         swiper.removeClasses();
-        el.removeAttribute("style");
-        wrapperEl.removeAttribute("style");
+        if (el && typeof el !== "string") {
+          el.removeAttribute("style");
+        }
+        if (wrapperEl) {
+          wrapperEl.removeAttribute("style");
+        }
         if (slides && slides.length) {
           slides.forEach((slideEl) => {
             slideEl.classList.remove(params.slideVisibleClass, params.slideFullyVisibleClass, params.slideActiveClass, params.slideNextClass, params.slidePrevClass);
@@ -6906,7 +6935,9 @@
         swiper.off(eventName);
       });
       if (deleteInstance !== false) {
-        swiper.el.swiper = null;
+        if (swiper.el && typeof swiper.el !== "string") {
+          swiper.el.swiper = null;
+        }
         deleteProps(swiper);
       }
       swiper.destroyed = true;
@@ -7124,7 +7155,14 @@
       nextEl = makeElementsArray(nextEl);
       prevEl = makeElementsArray(prevEl);
       const targetEl = e.target;
-      if (swiper.params.navigation.hideOnClick && !prevEl.includes(targetEl) && !nextEl.includes(targetEl)) {
+      let targetIsButton = prevEl.includes(targetEl) || nextEl.includes(targetEl);
+      if (swiper.isElement && !targetIsButton) {
+        const path = e.path || e.composedPath && e.composedPath();
+        if (path) {
+          targetIsButton = path.find((pathEl) => nextEl.includes(pathEl) || prevEl.includes(pathEl));
+        }
+      }
+      if (swiper.params.navigation.hideOnClick && !targetIsButton) {
         if (swiper.pagination && swiper.params.pagination && swiper.params.pagination.clickable && (swiper.pagination.el === targetEl || swiper.pagination.el.contains(targetEl)))
           return;
         let isHidden;
@@ -7232,6 +7270,16 @@
         }
       }
     }
+    function getMoveDirection(prevIndex, nextIndex, length) {
+      prevIndex = prevIndex % length;
+      nextIndex = nextIndex % length;
+      if (nextIndex === prevIndex + 1) {
+        return "next";
+      } else if (nextIndex === prevIndex - 1) {
+        return "previous";
+      }
+      return;
+    }
     function onBulletClick(e) {
       const bulletEl = e.target.closest(classesToSelector(swiper.params.pagination.bulletClass));
       if (!bulletEl) {
@@ -7242,7 +7290,14 @@
       if (swiper.params.loop) {
         if (swiper.realIndex === index)
           return;
-        swiper.slideToLoop(index);
+        const moveDirection = getMoveDirection(swiper.realIndex, index, swiper.slides.length);
+        if (moveDirection === "next") {
+          swiper.slideNext();
+        } else if (moveDirection === "previous") {
+          swiper.slidePrev();
+        } else {
+          swiper.slideToLoop(index);
+        }
       } else {
         swiper.slideTo(index);
       }
@@ -7657,7 +7712,7 @@
       if (e.target !== swiper.wrapperEl)
         return;
       swiper.wrapperEl.removeEventListener("transitionend", onTransitionEnd);
-      if (pausedByPointerEnter) {
+      if (pausedByPointerEnter || e.detail && e.detail.bySwiperTouchMove) {
         return;
       }
       resume();
@@ -7838,8 +7893,10 @@
       }
     };
     const detachMouseEvents = () => {
-      swiper.el.removeEventListener("pointerenter", onPointerEnter);
-      swiper.el.removeEventListener("pointerleave", onPointerLeave);
+      if (swiper.el && typeof swiper.el !== "string") {
+        swiper.el.removeEventListener("pointerenter", onPointerEnter);
+        swiper.el.removeEventListener("pointerleave", onPointerLeave);
+      }
     };
     const attachDocumentEvents = () => {
       const document2 = getDocument();
