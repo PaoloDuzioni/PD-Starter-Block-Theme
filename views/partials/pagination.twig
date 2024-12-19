@@ -1,6 +1,6 @@
 {% if posts.pagination.pages is not empty %}
     <nav class="wrap-pagination">
-        <ul class="pagination list-unstyled">
+        <ul class="pagination list-unstyled d-flex align-items-center {{ options.pagination_alignement }}">
             {# Previous #}
             {% if posts.pagination.prev %}
                 <li class="prev-link">

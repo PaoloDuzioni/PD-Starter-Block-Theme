@@ -7,7 +7,6 @@
  * - Banner noidex
  * - Register Thumbnail & Navigation Menus
  * - Include scripts & styles
- * - Custom Pagination
  * - Custom Blocks with ACF
  * - Custom WP API endpoints
  */
@@ -34,9 +33,6 @@ require_once(dirname(__FILE__) . '/core/theme_features_nav.php');
 
 // Include scripts & styles
 require_once(dirname(__FILE__) . '/core/theme_site-scripts.php');
-
-// Custom Pagination
-// require_once(dirname(__FILE__) . '/core/theme_pagination.php');
 
 // Custom Blocks with ACF
 // require_once(dirname(__FILE__) . '/blocks/register-blocks.php');
