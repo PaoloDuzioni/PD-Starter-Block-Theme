@@ -3,7 +3,7 @@
 /**
  * Enqueue front-end scripts and styles.
  */
-function pd_theme_styles()
+function pd_theme_styles(): void
 {
     // CSS
     wp_enqueue_style('gfonts-css', 'https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
@@ -15,15 +15,20 @@ function pd_theme_styles()
 }
 add_action('wp_enqueue_scripts', 'pd_theme_styles');
 
+/**
+ * Admin CSS
+ */
+function styles_admin(): void
+{
+    wp_enqueue_style('admin-css', get_template_directory_uri() . '/dist/css/style_admin.css', array(), null);
+}
+add_action('admin_enqueue_scripts', 'styles_admin');
+
 
 /**
- * Enqueue blocks back-end styles.
+ * Register Gutenberg CSS and JS
  */
-// function pd_admin_enqueue_styles() {
-
-//     // Add app css for admin blocks
-//     wp_enqueue_style('vendors-css', get_template_directory_uri() . '/dist/css/vendors.css');
-//     wp_enqueue_style('main-css', get_template_directory_uri() . '/dist/css/app.css');
-// }
-// add_action('admin_enqueue_scripts', 'pd_admin_enqueue_styles');
-
+function gutenberg_customs()
+{
+    wp_enqueue_script('ff-editor-js', get_template_directory_uri() . '/assets/dist/js/editor.js', array(), microtime(), true);
+}

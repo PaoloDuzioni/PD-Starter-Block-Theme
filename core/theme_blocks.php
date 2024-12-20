@@ -13,9 +13,18 @@ function iw_acf_init(): void {
             'title'				=> 'Site Sezione News',
             'description'		=> 'Sezione news',
             'render_callback'	=> 'acf_blocchi_callback',
-            'category'			=> 'publifarm_singoli',
+            'category'			=> 'site_singoli',
             'keywords'			=> array( 'link', 'home' ),
-            //'supports'			=> ['mode'=> false],
+            'mode' => 'edit'
+        ));
+        
+        acf_register_block_type(array(
+            'name'				=> 'slider-fullwidth',
+            'title'				=> 'Site Slider Fullwidth',
+            'description'		=> 'Slides di testo con immagine fullwidth',
+            'render_callback'	=> 'acf_blocchi_callback',
+            'category'			=> 'site_singoli',
+            'keywords'			=> array( 'link', 'home' ),
             'mode' => 'edit'
         ));
     }

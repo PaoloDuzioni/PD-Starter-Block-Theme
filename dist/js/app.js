@@ -8168,13 +8168,13 @@
 
   // src/js/partials/sliders.js
   function siteSliders() {
-    new Swiper(".site-carousel", {
+    new Swiper(".site-slider-fullwidth", {
       // Modules
       modules: [Autoplay, Navigation, Pagination, EffectFade],
       // Optional parameters
-      autoplay: {
-        delay: 5e3
-      },
+      //    autoplay: {
+      //      delay: 5000,
+      //    },
       speed: 700,
       loop: true,
       effect: "fade",

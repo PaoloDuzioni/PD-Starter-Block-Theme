@@ -1,7 +1,7 @@
 <?php if (!defined('ABSPATH')) exit;
 
 get_header(); ?>
-
+<!--TODO: add a 404 template-->
 <section id="page-404" class="wrap-internals container text-center">
     <img class="image" src="<?php echo get_template_directory_uri(); ?>/dist/images/img-404.svg" alt="Page not found">
     <div class="section-title small bold">

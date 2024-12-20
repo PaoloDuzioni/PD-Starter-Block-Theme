@@ -2,7 +2,8 @@
     BUTTONS
  ***************************************************/
 
-.button {
+.button,
+.wp-element-button {
     display: inline-block;
     min-width: 120px;
     padding: 0.6rem 2rem;

@@ -5,7 +5,7 @@
 // GLOBALS
 @import 'global/vars';
 @import 'global/base';
-// @import 'global/mixins';
+ @import 'global/mixins';
 @import 'global/typography';
 @import 'global/utilities';
 
@@ -24,4 +24,4 @@
 @import 'layout/footer';
 
 // CUSTOM BLOCKS
-// @import '../../blocks/banner/banner';
+@import 'blocks/block-slider-fullwidth';
