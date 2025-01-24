@@ -1,0 +1,17 @@
+<div class="site-slider-fullwidth swiper">
+    <div class="swiper-wrapper">
+        {% for slide in fields.block_site_slider %}
+            <div class="swiper-slide text-white">
+                <img class="image" src="{{ slide.immagine.url|resize(1920) }}" alt="{{ slide.immagine.alt }}"
+                     width={{ slide.immagine.width }} height={{ slide.immagine.height }} />
+            </div>
+        {% endfor %}
+    </div>
+    
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    
+    <div class="container container-pagination">
+        <div class="swiper-pagination"></div>
+    </div>
+</div>

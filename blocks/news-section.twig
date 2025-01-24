@@ -4,11 +4,11 @@
             <div class="col-md-6 col-lg-4">
                 <div class="box">
                     <div>
+                        <h3 class="title">{{ post.title }}</h3>
                         <a class="category"
                            href="{{ post.categories[0].link }}#top-archive">
                             {{ post.categories[0].title }}
                         </a>
-                        <h3 class="title">{{ post.title }}</h3>
                         <div class="date">{{ post.date('d F Y') }}</div>
                         <p class="text">{{ post.excerpt({ words: 100, read_more: false}) }}</p>
                     </div>
@@ -22,7 +22,7 @@
         {% endfor %}
     </div>
     
-    <div class="text-center">
+    <div class="text-center wrap-cta">
         <a class="button" href="{{ news_url }}">
             {{ fields.testo_cta_news_section }}
         </a>

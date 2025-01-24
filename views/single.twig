@@ -1,7 +1,7 @@
 {% extends "base.twig" %}
 
 {% block content %}
-    <article>
+    <article class="container">
         
         <header>
             <img src="{{ post.thumbnail.src('large') }}" alt="{{ post.title }}"/>
@@ -23,6 +23,5 @@
         <section>
             {{ post.content }}
         </section>
-    
     </article>
 {% endblock %}

@@ -11,7 +11,7 @@
 
 // COMPONENTS
 @import 'components/buttons';
-@import 'components/sliders';
+//@import 'components/sliders';
 @import 'components/form';
 @import 'components/pagination';
 
@@ -24,4 +24,5 @@
 @import 'layout/footer';
 
 // CUSTOM BLOCKS
-//@import 'blocks/block-slider-fullwidth';
+@import 'blocks/news-section';
+@import 'blocks/slider-fullwidth';
