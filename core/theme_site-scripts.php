@@ -24,11 +24,3 @@ function styles_admin(): void
 }
 add_action('admin_enqueue_scripts', 'styles_admin');
 
-
-/**
- * Register Gutenberg CSS and JS
- */
-function gutenberg_customs()
-{
-    wp_enqueue_script('ff-editor-js', get_template_directory_uri() . '/assets/dist/js/editor.js', array(), microtime(), true);
-}

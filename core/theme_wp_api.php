@@ -28,8 +28,8 @@ add_action('rest_api_init', function () {
     ));
 });
 
-/*** Calback for the new route ***/
-function pd_get_posts($data)
+/*** Callback for the new route ***/
+function pd_get_posts($data): array | null
 {
     //print debug log to php error log
     error_log(print_r($data, true));

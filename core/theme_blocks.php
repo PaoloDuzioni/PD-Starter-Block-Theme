@@ -12,7 +12,7 @@ function iw_acf_init(): void {
             'name'				=> 'news-section',
             'title'				=> 'Site Sezione News',
             'description'		=> 'Sezione news',
-            'render_callback'	=> 'acf_blocchi_callback',
+            'render_callback'	=> 'acf_blocks_callback',
             'category'			=> 'site_singoli',
             'keywords'			=> array( 'link', 'home' ),
             'mode' => 'edit'
@@ -22,7 +22,7 @@ function iw_acf_init(): void {
             'name'				=> 'slider-fullwidth',
             'title'				=> 'Site Slider Fullwidth',
             'description'		=> 'Slides di testo con immagine fullwidth',
-            'render_callback'	=> 'acf_blocchi_callback',
+            'render_callback'	=> 'acf_blocks_callback',
             'category'			=> 'site_singoli',
             'keywords'			=> array( 'link', 'home' ),
             'mode' => 'edit'
@@ -30,7 +30,7 @@ function iw_acf_init(): void {
     }
 }
 
-function acf_blocchi_callback( $block, $content = '', $is_preview = false ): void {
+function acf_blocks_callback( $block, $content = '', $is_preview = false ): void {
     //$context = Timber::context();
     $context['block'] = $block;
     $context['fields'] = get_fields();
@@ -61,26 +61,3 @@ function acf_blocchi_callback( $block, $content = '', $is_preview = false ): voi
     Timber::render( $slug.'.twig', $context);
 }
 
-
-/**
- * Custom block category
- */
-//add_filter( 'block_categories_all', array( $this, 'my_blocks_plugin_block_categories'), 10, 2 );
-
-//function my_blocks_plugin_block_categories( $categories ) {
-//    return array_merge(
-//        $categories,
-//        array(
-//            array(
-//                'slug' => 'publifarm',
-//                'title' => 'Pf Fasce',
-//                'icon'  => 'wordpress',
-//            ),
-//            array(
-//                'slug' => 'publifarm_singoli',
-//                'title' => 'Pf Elementi singoli',
-//                'icon'  => 'wordpress',
-//            ),
-//        )
-//    );
-//}

@@ -19,6 +19,8 @@
 
 Move the `.gitignore` file on the root directory of your project.
 
+Move the mu-plugins folder to wp-content
+
 Rename the theme folder as you wish.
 
 ## Development
@@ -50,14 +52,3 @@ Rename the theme folder as you wish.
 3. Run `npm run prod` to build the optimised version of JS and CSS files.
 4. Now is possible to preview the production version of the site with esternal link for testing on mobile devices with `npm run serve`.
 
-## Custom Blocks Activation with ACF Blocks
-
-To activate custom blocks with ACF Blocks you need to do the following steps:
-
-- Decomment the require *Custom Blocks with ACF* in `functions.php`.
-- Decomment the block scss styles in `src/scss/app.scss`.
-- Decomment *Enqueue blocks back-end styles.* in `core/theme_site-scripts.php` to allow the style of the block even on the back-end.
-
-In `blocks/` folder you can find the example of a custom block with ACF, called `banner`. It contains the php, scss and json files for definition, logic and style of the block. You can use this block as a template for your custom blocks.
-
-In this folder you can find also `register-blocks.php` file, where you can register your custom blocks.
