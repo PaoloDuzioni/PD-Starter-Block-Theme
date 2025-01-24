@@ -13,11 +13,11 @@
                 >{{ post.date }}</time>
             <p>
                 
-                {% for term in post.terms %}
-                    <a href="{{ term.link }}">
-                        {{ term.name }}
-                    </a>
-                {% endfor %}
+            {% for term in post.terms %}
+                <a href="{{ term.link }}">
+                    {{ term.name }}
+                </a>
+            {% endfor %}
         </header>
         
         <section>
