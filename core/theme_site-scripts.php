@@ -20,7 +20,7 @@ add_action('wp_enqueue_scripts', 'pd_theme_styles');
  */
 function styles_admin(): void
 {
-    wp_enqueue_style('admin-css', get_template_directory_uri() . '/dist/css/style_admin.css', array(), null);
+    wp_enqueue_style('admin-css', get_template_directory_uri() . '/dist/css/style-admin.css', array(), null);
 }
 add_action('admin_enqueue_scripts', 'styles_admin');
 
