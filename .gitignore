@@ -6,7 +6,7 @@ wp-content/uploads
 wp-includes
 wp-admin
 .htaccess
-#/index.php
+/index.php
 license.txt
 licenza.html
 readme.html
