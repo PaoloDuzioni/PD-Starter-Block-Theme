@@ -22,7 +22,7 @@ Timber\Timber::init();
 function robots_notice() : void
 {
     if (get_option('blog_public') == 0) :
-        echo '<div class="error notice"><p style="font-size:14px;"><b>Attenzione!</b> Modifica l\'impostazione del noindex altrimenti google non indicizzerà il sito!!!</p></div>';
+        echo '<div class="error notice"><p style="font-size:14px;"><b>Attenzione!</b> Modifica l\'impostazione del noindex altrimenti google non indicizzerà il sito!</p></div>';
     endif;
 }
 add_action('admin_notices', 'robots_notice');
