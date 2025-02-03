@@ -1,8 +1,75 @@
 /******************************************************
     MIXINS
+
+    - buttons
+    - titles
     - general-typography rules
     - list-custom
+    - image-fit
  ******************************************************/
+
+@mixin button($variant: 'primary') {
+    display: inline-flex;
+    gap: 2rem;
+    min-width: 120px;
+    font-family: $main-font;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.6rem;
+    padding: 1.2rem 2.7rem;
+    border-radius: 0.9rem;
+    transition:
+        background 0.3s,
+        transform 0.3s,
+        opacity 0.3s;
+    outline: none;
+    border: none;
+
+    @if ($variant == 'primary') {
+        color: $white;
+        background: $black;
+    } @else if ($variant == 'white') {
+        color: $black;
+        background: $white;
+    } @else if ($variant == 'outline') {
+        color: inherit;
+        background: transparent;
+        border: 1px solid currentColor;
+    }
+
+    &:hover,
+    &:focus {
+        transform: translateY(-5px);
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+        transform: none;
+    }
+}
+
+// Titles
+@mixin section-title($size: 'normal') {
+    line-height: 1.3;
+
+    @if ($size == 'normal') {
+        font-size: 3.6rem;
+    } @else if($size == 'big') {
+        font-size: 4.8rem;
+    } @else if($size == 'small') {
+        font-size: 2.4rem;
+        line-height: 1.2;
+    } @else {
+        font-size: 1.6rem;
+    }
+
+    & > * {
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+    }
+}
 
 // General typography rules where needed
 @mixin general-typography() {
@@ -36,6 +103,7 @@
 @mixin list-custom() {
     list-style: none;
     padding-left: 0;
+
     li {
         display: flex;
         margin-bottom: 0.5rem;
@@ -53,7 +121,7 @@
     }
 }
 
-
+// Image fit (object-fit)
 @mixin image-fit($isAbsolute: false) {
     width: 100%;
     height: 100%;
