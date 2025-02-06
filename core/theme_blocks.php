@@ -31,12 +31,11 @@ function iw_acf_init(): void {
 }
 
 function acf_blocks_callback( $block, $content = '', $is_preview = false ): void {
-    //$context = Timber::context();
     $context['block'] = $block;
     $context['fields'] = get_fields();
     $context['is_preview'] = $is_preview;
     $slug = str_replace('acf/', '', $block['name']);
-    $timber_post     = Timber::get_post();
+    $timber_post = Timber::get_post();
     $context['post'] = $timber_post;
     
     $str = rand();
