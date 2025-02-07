@@ -2,7 +2,17 @@
     BUTTONS
  ***************************************************/
 
-.button,
+.button {
+    &:not(.outline) {
+        @include button();
+    }
+
+    &.outline:not(.hover-white) {
+        @include button('outline');
+    }
+}
+
+// On Gutemberg block buttons
 .wp-block-button {
     &:not(.outline) > * {
         @include button();
