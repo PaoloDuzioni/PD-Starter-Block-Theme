@@ -5,7 +5,7 @@ Modulo:
 <div class="row">
 <div class="col-md-6">[text* nome placeholder "Nome*"]</div>
 <div class="col-md-6">[text* cognome placeholder "Cognome*"]</div>
-<div class="col-md-6">[text* telefono placeholder "Telefono*"]</div>
+<div class="col-md-6">[tel* telefono placeholder "Telefono*"]</div>
 <div class="col-md-6">[email* email placeholder "E-mail*"]</div>
 <div class="col-md-12"><div class="wrap-select">[select* posizione first_as_label "Analista/Sviluppatore MES" "Tecnico Automazione Industriale/Trasfertista" "Tecnico Sistemista" "Sviluppatore Software"]</div></div>
 <div class="col-md-12">[textarea messaggio placeholder "Messaggio"]</div>
@@ -35,4 +35,26 @@ Mail:
 
 --
 Questa e-mail è stata inviata da un modulo di contatto su [_site_title] ([_site_url])
+
+
+
+
+WITH LABELS
+
+<div class="row">
+<div class="col-md-6"><label>Nome[text* nome placeholder "Nome*"]</label></div>
+<div class="col-md-6"><label>Cognome [text* cognome placeholder "Cognome*"]</label></div>
+<div class="col-md-12"><label>E-mail[email* email placeholder "E-mail*"]</label></div>
+<div class="col-md-12"><label>Telefono[tel* telefono placeholder "Telefono*"]</label></div>
+<div class="col-md-12"><label>Messaggio[textarea messaggio placeholder "Messaggio"]</label></div>
+<div class="col-md-6">
+<div class="wrap-acceptance">
+[acceptance acceptance-798]Accetto la <a href="https://localhost:3000/site-scanlight/privacy-policy/">Privacy Policy</a>.[/acceptance]
+</div>
+</div>
+<div class="col-md-6 wrap-submit">[submit class:button class:outline "Invia"]</div>
+</div>
+
 -->
+
+
