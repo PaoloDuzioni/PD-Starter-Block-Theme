@@ -1,0 +1,15 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <section id="page-404" class="wrap-internals container text-center">
+        <img class="image" src="{{ image }}"
+             alt="Page not found">
+        <div class="section-title h1">
+            <h1>{{ title }}</h1>
+        </div>
+        <p>{{ text }}</p>
+        <a class="button outline hover-white" href="{{ home_url }}">
+            {{ button_text }}
+        </a>
+    </section>
+{% endblock %}
