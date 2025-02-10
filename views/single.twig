@@ -1,17 +1,17 @@
 {% extends "base.twig" %}
 
 {% block content %}
-    <article class="container">
-        <header>
+    <article>
+        <header class="container">
             {% if post.thumbnail %}
                 <img src="{{ post.thumbnail.src('large') }}" alt="{{ post.title }}" />
             {% endif %}
             <h1>{{ post.title }}</h1>
             
             <p>
-                <time
-                        datetime="{{ post.date('Y-m-d H:i:s') }}"
-                >{{ post.date }}</time>
+                <time datetime="{{ post.date('Y-m-d H:i:s') }}">
+                    {{ post.date }}
+                </time>
             <p>
                 
                 {% for term in post.terms %}
