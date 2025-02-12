@@ -25,6 +25,7 @@ add_action('rest_api_init', function () {
     register_rest_route('pd/v1', '/posts', array(
         'methods' => 'GET',
         'callback' => 'pd_get_posts',
+        'permission_callback' => '__return_true'
     ));
 });
 
