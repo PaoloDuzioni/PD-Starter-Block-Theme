@@ -15,7 +15,7 @@ export default function scrollAnimations() {
      * Scroll Animation
      */
         // Setup
-    const isMobile = window.innerWidth < 768 ? true : false;
+    const isMobile = window.innerWidth < 768;
 
     function commonScrollOptions(section) {
         return {
