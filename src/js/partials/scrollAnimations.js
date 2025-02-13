@@ -5,128 +5,65 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 /**
  * GSAP on scroll animations
  *
- * - Fade animations
- * - Animated Counters
- * - Parallax effect
- * - Scroll to ID section
+ * Scroll animation
+ * Scroll to ID section
  */
 export default function scrollAnimations() {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-   /**
-     * Fade animations
-     * needs .animation-container
-     * needs data-animation="" attribute
-     * optional data-speed="0.5" for animation speed (1 is 1 second)
-     * optional data-staggered="true" for an incremental entering of elements (not on mobile)
-     * optional data-delay="0.5" // to add a start delay (1 is 1 second)
+    /**
+     * Scroll Animation
      */
-    const animationContainers = document.querySelectorAll(
-        '.animation-container'
+        // Setup
+    const isMobile = window.innerWidth < 768 ? true : false;
+
+    function commonScrollOptions(section) {
+        return {
+            scrollTrigger: {
+                trigger: section,
+                start: isMobile ? 'top bottom' : '100px 90%',
+                //markers: true,
+            },
+            opacity: 0,
+            duration: 0.5,
+        };
+    }
+
+    // Block Text Side Image and Block Text Side Carousel
+    const blockSTextSideImage = document.querySelector(
+        '.block-text-side-image, .block-text-side-carousel',
     );
-    if (animationContainers) {
-        const isMobile = window.innerWidth < 768 ? true : false;
+    if (blockSTextSideImage) {
+        const colLeft = blockSTextSideImage.querySelector(
+            '.wp-block-evidenzio-column:first-child',
+        );
+        const image = blockSTextSideImage.querySelector(
+            '.wp-block-image, .block-carousel',
+        );
 
-        for (let container of animationContainers) {
-            const animationElements =
-                container.querySelectorAll('[data-animation]');
+        const delay =
+            blockSTextSideImage.previousElementSibling.classList.contains(
+                'block-slider-video',
+            )
+                ? 0.4
+                : 0;
 
-            // ScrollTrigger
-            ScrollTrigger.batch(animationElements, {
-                onEnter: batch => {
-                    batch.forEach((element, index) => {
-                        const speed = element.dataset.speed
-                            ? element.dataset.speed
-                            : 0.5;
-                        const isStaggered = element.dataset.staggered;
-                        const delay = element.dataset.delay
-                            ? element.dataset.delay
-                            : 0;
+        gsap.from(colLeft, {
+            ...commonScrollOptions(blockSTextSideImage),
+            x: -100,
+            delay,
+        });
 
-                        // Animation options
-                        let animationOptions = {
-                            duration: speed,
-                            delay:
-                                isStaggered && !isMobile
-                                    ? index * 0.3 + delay
-                                    : delay,
-                            opacity: 1,
-                        };
-
-                        // Animation type
-                        switch (element.dataset.animation) {
-                            case 'fade-in':
-                            case 'fade-in-centered':
-                                animationOptions.scale = 1;
-                                break;
-                            case 'fade-left':
-                            case 'fade-right':
-                            case 'fade-left-full':
-                            case 'fade-right-full':
-                                animationOptions.x = 0;
-                                break;
-                            case 'fade-up':
-                                animationOptions.y = 0;
-                                break;
-                            default:
-                                console.error(
-                                    'Wrong or missing data-animation type'
-                                );
-                        }
-
-                        gsap.to(element, {
-                            ...animationOptions,
-                        });
-                    });
-                },
-                once: true,
-            });
-        }
+        gsap.from(image, {
+            ...commonScrollOptions(image),
+            x: 100,
+            delay,
+        });
     }
     
-    /**
-     * Animated Counters
-     */
-    const animatedCounters = document.querySelectorAll('.animated-counter');
-
-    for (const counter of animatedCounters) {
-        gsap.from(counter, {
-            scrollTrigger: {
-                trigger: counter,
-                start: '100px 90%',
-            },
-            textContent: '0',
-            duration: 1,
-            ease: 'power1.inOut',
-            modifiers: {
-                // italian puntuation and no decimals
-                textContent: value =>
-                    value.toLocaleString('it-IT', {
-                        minimumFractionDigits: 0,
-                        maximumFractionDigits: 0,
-                    }),
-            },
-        });
-    }
 
     /**
-     * Parallax effect
-     * needs .parallax-section and .parallax-image classes
-     */
-    const parallaxParent = document.querySelector('.parallax-section');
-    if (parallaxParent) {
-        gsap.to('.parallax-image', {
-            yPercent: +50,
-            ease: 'none',
-            scrollTrigger: {
-                trigger: parallaxParent,
-                scrub: true,
-            },
-        });
-    }
-
-    /**
-     * Scroll to ID section (only if needed for particular situations)
+     * Scroll to ID section
      */
     const urlHash = window.location.href.split('#')[1];
     const scrollElem = document.querySelector('#' + urlHash);
@@ -135,8 +72,8 @@ export default function scrollAnimations() {
         const scrollTop = scrollElem.offsetTop;
         // get css header offset custom property and convert to px
         let headerOffset = getComputedStyle(
-            document.documentElement
-        ).getPropertyValue('--header-scrolled');
+            document.documentElement,
+        ).getPropertyValue('--header-scrolled-height');
         headerOffset = parseInt(headerOffset) * 10;
 
         gsap.to(window, {
