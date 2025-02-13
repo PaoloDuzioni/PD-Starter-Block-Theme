@@ -60,6 +60,32 @@ export default function scrollAnimations() {
             delay,
         });
     }
+
+
+    /**
+     * Animated Counters
+     */
+    const animatedCounters = document.querySelectorAll('.animated-counter');
+
+    for (const counter of animatedCounters) {
+        gsap.from(counter, {
+            scrollTrigger: {
+                trigger: counter,
+                start: '100px 90%',
+            },
+            textContent: '0',
+            duration: 1,
+            ease: 'power1.inOut',
+            modifiers: {
+                // italian puntuation and no decimals
+                textContent: value =>
+                    value.toLocaleString('it-IT', {
+                        minimumFractionDigits: 0,
+                        maximumFractionDigits: 0,
+                    }),
+            },
+        });
+    }
     
 
     /**
