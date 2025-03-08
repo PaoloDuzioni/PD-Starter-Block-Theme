@@ -1,0 +1,20 @@
+<div class="accordion">
+    {% for accordion in fields.accordion %}
+        <div class="accordion-item">
+            <h2 class="accordion-header titolo_pb h2" id="heading-accordion-{{ loop.index }}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse-accordion-{{ loop.index }}"
+                        aria-expanded="true" aria-controls="collapse-accordion-{{ loop.index }}">
+                    {{ accordion.titolo }}
+                    {% include '/partial/arrow-icon.twig' %}
+                </button>
+            </h2>
+            <div id="collapse-accordion-{{ loop.index }}" class="accordion-collapse collapse"
+                 aria-labelledby="heading-accordion-{{ loop.index }}">
+                <div class="accordion-body">
+                    {{ accordion.testo }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
