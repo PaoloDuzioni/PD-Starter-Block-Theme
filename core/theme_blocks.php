@@ -14,7 +14,7 @@ function iw_acf_init(): void {
             'description'		=> 'Sezione news',
             'render_callback'	=> 'acf_blocks_callback',
             'category'			=> 'site_singoli',
-            'keywords'			=> array( 'link', 'home' ),
+            'keywords'			=> array( 'site', 'sitename' ),
             'mode' => 'edit'
         ));
         
@@ -24,9 +24,19 @@ function iw_acf_init(): void {
             'description'		=> 'Slides di testo con immagine fullwidth',
             'render_callback'	=> 'acf_blocks_callback',
             'category'			=> 'site_singoli',
-            'keywords'			=> array( 'link', 'home' ),
+            'keywords'			=> array( 'site', 'sitename' ),
             'mode' => 'edit'
         ));
+
+        acf_register_block_type(array(
+				'name'				=> 'accordion',
+				'title'				=> 'Accordion',
+				'description'		=> 'Sezione accordion',
+				'render_callback'	=> array( $this, 'acf_blocchi_callback'),
+				'category'			=> 'publifarm_singoli',
+				'keywords'			=> array( 'site', 'sitename' ),
+				'mode' => 'edit'
+			));
     }
 }
 
