@@ -1,0 +1,66 @@
+/******************************************************
+    BLOCK ACCORDION
+ ******************************************************/
+
+.block-accordion {
+    padding: 10rem 0;
+
+    .accordion {
+        --side-padding: 15rem;
+
+        .accordion-item {
+            background: $white;
+            border-radius: 3rem;
+            box-shadow: 0 3px 6px rgba($black, 0.4);
+            overflow: hidden;
+
+            &:not(:last-child) {
+                margin-bottom: 2rem;
+            }
+        }
+
+        .accordion-header {
+            margin: 0;
+        }
+
+        .accordion-button {
+            position: relative;
+            display: flex;
+            width: 100%;
+            padding: 4rem var(--side-padding);
+            background: $white;
+            border: none;
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                margin: 0;
+            }
+
+            svg {
+                position: absolute;
+                top: 3.7rem;
+                right: 5rem;
+                rotate: 90deg;
+                transition: rotate 0.3s;
+            }
+
+            &:not(.collapsed) {
+                svg {
+                    rotate: 0deg;
+                }
+            }
+        }
+
+        .accordion-body {
+            padding: 0 var(--side-padding) 5rem;
+
+            p:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
