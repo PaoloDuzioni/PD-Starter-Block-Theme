@@ -19,7 +19,7 @@
 
 Move the `.gitignore` file on the root directory of your project.
 
-Move the mu-plugins folder to wp-content
+Move the `mu-plugins` folder to wp-content
 
 Rename the theme folder as you wish.
 
