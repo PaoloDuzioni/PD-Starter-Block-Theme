@@ -11,6 +11,7 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
  */
 export default function scrollAnimations() {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+    
     /******************************************************
          FADE ANIMATIONS
      ******************************************************/
