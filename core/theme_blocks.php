@@ -32,7 +32,7 @@ function iw_acf_init(): void {
             'name'				=> 'accordion',
             'title'				=> 'Accordion',
             'description'		=> 'Sezione accordion',
-            'render_callback'	=> 'acf_blocchi_callback',
+            'render_callback'	=> 'acf_blocks_callback',
             'category'			=> 'site',
             'keywords'			=> array( 'site', 'sitename' ),
             'mode' => 'edit'
