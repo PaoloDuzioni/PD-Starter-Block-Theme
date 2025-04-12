@@ -65,8 +65,7 @@ function acf_blocks_callback( $block, $content = '', $is_preview = false ): void
         $context['posts'] = $posts;
         $context['news_url'] = get_post_type_archive_link( 'post' );
     }
-    
-    Timber::$dirname = 'blocks';
+
     Timber::render( $slug.'.twig', $context);
 }
 
