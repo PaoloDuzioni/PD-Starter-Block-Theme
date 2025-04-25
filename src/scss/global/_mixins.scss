@@ -143,7 +143,31 @@
     }
 }
 
-// How to use this mixin
-// .element {
-//     @include mixin-name;
-// }
+// Section vertical spaces
+@mixin section-vertical-space($amount) {
+    &.space-top {
+        padding-top: $amount;
+    }
+
+    &.space-bottom {
+        padding-bottom: $amount;
+    }
+
+    &.vertical-space {
+        padding-top: $amount;
+        padding-bottom: $amount;
+    }
+
+    &.no-space-top {
+        padding-top: 0;
+    }
+
+    &.no-space-bottom {
+        padding-bottom: 0;
+    }
+
+    &.no-vertical-space {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
