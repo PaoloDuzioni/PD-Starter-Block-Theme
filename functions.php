@@ -41,9 +41,9 @@ require_once(dirname(__FILE__) . '/core/theme_setup.php');
 // Custom WP API endpoints
 //require_once( dirname( __FILE__ ) . '/core/theme_wp_api.php' );
 
-
 // Custom Blocks with ACF
  require_once(dirname(__FILE__) . '/core/theme_blocks.php');
+
 /**
  * TESTING MAIL SMTP
  */
