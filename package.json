@@ -15,19 +15,21 @@
     },
     "author": "Paolo Duzioni",
     "license": "ISC",
-    "browserslist": ["defaults"],
+    "browserslist": [
+        "defaults"
+    ],
     "dependencies": {
-        "bootstrap": "^5.3.3",
-        "swiper": "^11.1.10"
+        "bootstrap": "^5.3.8",
+        "swiper": "^12.0.3"
     },
     "devDependencies": {
-        "autoprefixer": "^10.4.20",
-        "browser-sync": "^3.0.2",
-        "concurrently": "^8.2.2",
-        "esbuild": "0.20.2",
-        "postcss": "^8.4.41",
-        "postcss-cli": "^11.0.0",
-        "sass": "^1.83.4",
-        "shx": "^0.3.4"
+        "autoprefixer": "^10.4.23",
+        "browser-sync": "^3.0.4",
+        "concurrently": "^9.2.1",
+        "esbuild": "0.27.2",
+        "postcss": "^8.5.6",
+        "postcss-cli": "^11.0.1",
+        "sass": "^1.97.0",
+        "shx": "^0.4.0"
     }
 }

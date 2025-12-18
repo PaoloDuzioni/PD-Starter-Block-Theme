@@ -8,7 +8,7 @@
  |
  */
 module.exports = {
-    proxy: 'https://localhost/site-test/', // Set here the url of your site
+    proxy: 'https://localhost/test-site/', // Set here the url of your site
     notify: false,
     open: false,
     // Reloads the browser when PHP files change.
