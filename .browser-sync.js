@@ -9,6 +9,7 @@
  */
 module.exports = {
     proxy: 'https://localhost/test-site/', // Set here the url of your site
+    online: true, // force online mode for Surfshark DNS
     notify: false,
     open: false,
     // Reloads the browser when PHP files change.
